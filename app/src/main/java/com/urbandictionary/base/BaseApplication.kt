@@ -1,8 +1,10 @@
 package com.urbandictionary.base
 
 import android.app.Application
+import androidx.multidex.MultiDex
 import com.urbandictionary.BuildConfig
-import com.urbandictionary.injection.Modules
+import com.urbandictionary.di.AppModule
+import com.urbandictionary.di.NetworkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
@@ -13,6 +15,8 @@ import timber.log.Timber
 class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        MultiDex.install(this)
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
@@ -29,7 +33,7 @@ class BaseApplication : Application() {
                 }
             })
             androidContext(this@BaseApplication)
-            modules(Modules.all)
+            modules(AppModule, NetworkModule)
         }
     }
 }

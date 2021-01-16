@@ -1,4 +1,4 @@
-package com.urbandictionary.ui.hit
+package com.urbandictionary.presentation.hit
 
 import androidx.databinding.ObservableBoolean
 import com.urbandictionary.base.AsyncViewModel

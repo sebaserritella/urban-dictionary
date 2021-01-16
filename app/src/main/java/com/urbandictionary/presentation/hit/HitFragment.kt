@@ -1,4 +1,4 @@
-package com.urbandictionary.ui.hit
+package com.urbandictionary.presentation.hit
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.urbandictionary.R
 import com.urbandictionary.databinding.FragmentHitBinding
+import com.urbandictionary.presentation.search.SearchViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HitFragment : Fragment() {
 
     private lateinit var binding: FragmentHitBinding
-    private val viewModel: HitViewModel by viewModel()
+    private val viewModel: SearchViewModel by viewModel()
 
     private var url: String = ""
 

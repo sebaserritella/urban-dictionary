@@ -1,4 +1,4 @@
-package com.urbandictionary.ui
+package com.urbandictionary.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

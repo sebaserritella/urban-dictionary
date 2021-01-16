@@ -1,4 +1,4 @@
-package com.urbandictionary.splash
+package com.urbandictionary.presentation.splash
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +9,8 @@ class SplashFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToArticleListFragment())
+        this.findNavController()
+            .navigate(SplashFragmentDirections.actionSplashFragmentToSearchFragment())
     }
-
 
 }

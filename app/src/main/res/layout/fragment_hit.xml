@@ -10,7 +10,7 @@
 
         <variable
             name="vm"
-            type="com.urbandictionary.ui.hit.HitViewModel" />
+            type="com.urbandictionary.presentation.search.SearchViewModel" />
 
     </data>
 

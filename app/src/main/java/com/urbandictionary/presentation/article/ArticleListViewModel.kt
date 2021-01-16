@@ -1,4 +1,4 @@
-package com.urbandictionary.ui.article
+package com.urbandictionary.presentation.article
 
 import android.view.View
 import androidx.lifecycle.LiveData

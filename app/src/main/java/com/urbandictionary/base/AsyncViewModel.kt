@@ -14,7 +14,6 @@ abstract class AsyncViewModel : ViewModel(), CoroutineScope {
 
     override fun onCleared() {
         super.onCleared()
-
         viewModelJob.cancel()
     }
 }

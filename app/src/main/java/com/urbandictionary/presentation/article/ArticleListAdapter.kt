@@ -1,9 +1,8 @@
-package com.urbandictionary.ui.article
+package com.urbandictionary.presentation.article
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.urbandictionary.R
 import com.urbandictionary.data.model.Hit

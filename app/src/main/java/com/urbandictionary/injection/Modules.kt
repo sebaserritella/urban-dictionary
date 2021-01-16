@@ -7,8 +7,8 @@ import com.urbandictionary.R
 import com.urbandictionary.data.database.AppDatabase
 import com.urbandictionary.data.network.HitApi
 import com.urbandictionary.data.repository.ArticleRepository
-import com.urbandictionary.ui.article.ArticleListViewModel
-import com.urbandictionary.ui.hit.HitViewModel
+import com.urbandictionary.presentation.article.ArticleListViewModel
+import com.urbandictionary.presentation.search.SearchViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -53,7 +53,7 @@ object Modules {
 
     private val viewModelModule = module {
         viewModel { ArticleListViewModel(get()) }
-        viewModel { HitViewModel() }
+        viewModel { SearchViewModel(get()) }
     }
 
     val all: List<Module> = listOf(

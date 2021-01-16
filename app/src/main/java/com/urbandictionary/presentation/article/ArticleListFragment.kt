@@ -1,4 +1,4 @@
-package com.urbandictionary.ui.article
+package com.urbandictionary.presentation.article
 
 import android.os.Bundle
 import android.view.LayoutInflater

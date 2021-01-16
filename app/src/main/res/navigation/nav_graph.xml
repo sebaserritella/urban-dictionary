@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.urbandictionary.splash.SplashFragment"
+        android:name="com.urbandictionary.presentation.splash.SplashFragment"
         tools:layout="@layout/fragment_splash">
 
         <action
-            android:id="@+id/action_splashFragment_to_articleListFragment"
-            app:destination="@id/articleListFragment" />
+            android:id="@+id/action_splashFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/articleListFragment"
-        android:name="com.urbandictionary.ui.article.ArticleListFragment"
-        tools:layout="@layout/fragment_article_list">
+        android:id="@+id/searchFragment"
+        android:name="com.urbandictionary.presentation.search.SearchFragment"
+        tools:layout="@layout/fragment_search">
 
     </fragment>
 

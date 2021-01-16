@@ -6,11 +6,11 @@
 
         <variable
             name="viewModel"
-            type="com.urbandictionary.ui.article.ArticleListViewModel" />
+            type="com.urbandictionary.presentation.article.ArticleListViewModel" />
 
         <variable
             name="adapter"
-            type="com.urbandictionary.ui.article.ArticleListAdapter" />
+            type="com.urbandictionary.presentation.article.ArticleListAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
