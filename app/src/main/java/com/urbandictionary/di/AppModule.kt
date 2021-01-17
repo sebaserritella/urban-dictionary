@@ -8,7 +8,8 @@ val AppModule = module {
 
     viewModel { SearchViewModel(get()) }
 
-    single { createGetPostsUseCase(get()) }
+    single { createGetUrbanDictionaryUseCase(get()) }
 
-    single { createPostRepository(get()) }
+    single { createDictionaryRepository(get(), get()) }
 }
+

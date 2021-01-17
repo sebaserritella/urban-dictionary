@@ -1,11 +1,10 @@
-package com.urbandictionary.data.model
+package com.urbandictionary.domain.model
 
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
 
 @JsonClass(generateAdapter = true)
 data class UrbanDictionaryResponse(

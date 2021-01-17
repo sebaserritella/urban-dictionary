@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.urbandictionary.R
-import com.urbandictionary.data.model.Urban
+import com.urbandictionary.domain.model.Urban
 import com.urbandictionary.databinding.HolderUrbanBinding
 import kotlin.properties.Delegates
 

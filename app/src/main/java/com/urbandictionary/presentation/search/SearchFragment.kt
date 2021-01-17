@@ -50,12 +50,20 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.searchButton.setOnClickListener {
-            binding.vm?.getDefine("perro")
+            binding.vm?.getDefine(binding.textInputEditText.text.toString())
+        }
+
+        binding.downSortButton.setOnClickListener {
+            binding.vm?.sortDown()
+        }
+
+        binding.upSortButton.setOnClickListener {
+            binding.vm?.sortUp()
         }
 
         binding.vm?.resultDictionaryData?.observe(this.viewLifecycleOwner, { dictionaryResponse ->
             binding.progressBar.visibility = GONE
-            dictionaryResponse.list?.let { mAdapter?.urbanList = it }
+            dictionaryResponse?.let { mAdapter?.urbanList = it }
         })
 
         binding.vm?.messageData?.observe(this.viewLifecycleOwner, {

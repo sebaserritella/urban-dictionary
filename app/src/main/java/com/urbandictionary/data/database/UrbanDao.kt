@@ -5,24 +5,23 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.urbandictionary.data.model.Urban
+import com.urbandictionary.domain.model.Urban
 
 @Dao
 interface UrbanDao {
 
     @Query("SELECT * FROM Urban")
-    fun all(): LiveData<List<Urban>>
+    fun all(): LiveData<List<Urban>?>
 
-    @Query("SELECT * FROM Urban WHERE defid=:urbanId")
-    fun getById(urbanId: Long): LiveData<Urban>
+    @Query("SELECT * FROM Urban WHERE word=:word")
+    fun getDefine(word: String): LiveData<List<Urban>?>
 
     @get:Query("SELECT count(*) FROM Urban")
     val count: Int
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(vararg urban: Urban)
+    fun insertAllUrban(urban: List<Urban>)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(urban: Urban)
+
 
 }

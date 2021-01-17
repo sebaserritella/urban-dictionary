@@ -5,6 +5,7 @@ import androidx.multidex.MultiDex
 import com.urbandictionary.BuildConfig
 import com.urbandictionary.di.AppModule
 import com.urbandictionary.di.NetworkModule
+import com.urbandictionary.injection.Modules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
@@ -33,7 +34,7 @@ class BaseApplication : Application() {
                 }
             })
             androidContext(this@BaseApplication)
-            modules(AppModule, NetworkModule)
+            modules(Modules.databaseModule, NetworkModule, AppModule)
         }
     }
 }

@@ -8,9 +8,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 object Modules {
-
-
-    private val databaseModule = module {
+    val databaseModule = module {
         single {
             val db: AppDatabase = get()
             db.urbanDao()
@@ -25,9 +23,4 @@ object Modules {
                 .build()
         }
     }
-
-
-    val all: List<Module> = listOf(
-        databaseModule
-    )
 }

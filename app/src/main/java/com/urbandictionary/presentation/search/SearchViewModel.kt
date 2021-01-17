@@ -5,26 +5,28 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.urbandictionary.data.model.UrbanDictionaryResponse
 import com.urbandictionary.domain.model.ApiError
-import com.urbandictionary.domain.usecase.GetPostsUseCase
+import com.urbandictionary.domain.model.Urban
+import com.urbandictionary.domain.model.UrbanDictionaryResponse
+import com.urbandictionary.domain.usecase.GetUrbanDictionaryUseCase
 import com.urbandictionary.domain.usecase.base.UseCaseResponse
 
-class SearchViewModel constructor(private val getPostsUseCase: GetPostsUseCase) : ViewModel() {
+class SearchViewModel constructor(private val getUrbanDictionaryUseCase: GetUrbanDictionaryUseCase) :
+    ViewModel() {
 
-    val resultDictionaryData = MutableLiveData<UrbanDictionaryResponse>()
+    val resultDictionaryData = MutableLiveData<List<Urban>>()
     val showProgressbar = MutableLiveData<Boolean>()
     val messageData = MutableLiveData<String>()
 
     fun getDefine(term: String) {
         showProgressbar.value = true
-        getPostsUseCase.invoke(
+        getUrbanDictionaryUseCase.invoke(
             viewModelScope, term,
             object :
                 UseCaseResponse<UrbanDictionaryResponse> {
                 override fun onSuccess(result: UrbanDictionaryResponse) {
                     Log.i(TAG, "result: $result")
-                    resultDictionaryData.value = result
+                    resultDictionaryData.value = result.list
                     showProgressbar.value = false
                 }
 
@@ -36,11 +38,15 @@ class SearchViewModel constructor(private val getPostsUseCase: GetPostsUseCase) 
         )
     }
 
-
     companion object {
         private val TAG = SearchViewModel::class.java.name
     }
 
+    fun sortDown() {
+        resultDictionaryData.postValue(resultDictionaryData.value?.sortedByDescending { x -> x.thumbs_down })
+    }
 
-    val showLoading = ObservableBoolean()
+    fun sortUp() {
+        resultDictionaryData.postValue(resultDictionaryData.value?.sortedByDescending { x -> x.thumbs_up })
+    }
 }

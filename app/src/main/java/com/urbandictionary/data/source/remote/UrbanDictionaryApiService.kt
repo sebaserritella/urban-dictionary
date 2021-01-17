@@ -1,6 +1,6 @@
 package com.urbandictionary.data.source.remote
 
-import com.urbandictionary.data.model.UrbanDictionaryResponse
+import com.urbandictionary.domain.model.UrbanDictionaryResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
