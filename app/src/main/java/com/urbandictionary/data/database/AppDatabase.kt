@@ -4,9 +4,10 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.urbandictionary.data.model.Article
+import com.urbandictionary.data.model.Urban
 
-@Database(entities = [Article::class], version = 2, exportSchema = false)
+@Database(entities = [Urban::class], version = 0, exportSchema = false)
 @TypeConverters(IntegerListConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun articleDao(): ArticleDao
+    abstract fun urbanDao(): UrbanDao
 }
