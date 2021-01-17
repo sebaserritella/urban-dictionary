@@ -12,7 +12,7 @@ import com.urbandictionary.domain.usecase.base.UseCaseResponse
 
 class SearchViewModel constructor(private val getPostsUseCase: GetPostsUseCase) : ViewModel() {
 
-    val postsData = MutableLiveData<UrbanDictionaryResponse>()
+    val resultDictionaryData = MutableLiveData<UrbanDictionaryResponse>()
     val showProgressbar = MutableLiveData<Boolean>()
     val messageData = MutableLiveData<String>()
 
@@ -24,7 +24,7 @@ class SearchViewModel constructor(private val getPostsUseCase: GetPostsUseCase) 
                 UseCaseResponse<UrbanDictionaryResponse> {
                 override fun onSuccess(result: UrbanDictionaryResponse) {
                     Log.i(TAG, "result: $result")
-                    postsData.value = result
+                    resultDictionaryData.value = result
                     showProgressbar.value = false
                 }
 

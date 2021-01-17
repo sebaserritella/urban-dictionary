@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.urbandictionary.R
 import com.urbandictionary.databinding.FragmentSearchBinding
+import com.urbandictionary.util.isNetworkAvailable
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
@@ -28,6 +33,15 @@ class SearchFragment : Fragment() {
         binding.vm = viewModel
 
         binding.urbanDictionaryList.adapter = mAdapter
+
+        if (this.context?.isNetworkAvailable() == false) {
+            Toast.makeText(
+                this.context,
+                getString(R.string.no_internet_connection),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
         return binding.root
     }
 
@@ -39,9 +53,17 @@ class SearchFragment : Fragment() {
             binding.vm?.getDefine("perro")
         }
 
-        binding.vm?.postsData?.observe(this.viewLifecycleOwner, { dictionaryResponse ->
+        binding.vm?.resultDictionaryData?.observe(this.viewLifecycleOwner, { dictionaryResponse ->
             binding.progressBar.visibility = GONE
             dictionaryResponse.list?.let { mAdapter?.urbanList = it }
+        })
+
+        binding.vm?.messageData?.observe(this.viewLifecycleOwner, {
+            Toast.makeText(this.context, it, LENGTH_LONG).show()
+        })
+
+        binding.vm?.showProgressbar?.observe(this.viewLifecycleOwner, Observer { isVisible ->
+           binding.progressBar.visibility = if (isVisible) VISIBLE else GONE
         })
 
     }

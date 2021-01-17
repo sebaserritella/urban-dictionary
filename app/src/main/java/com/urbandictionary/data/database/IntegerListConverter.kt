@@ -3,7 +3,6 @@ package com.urbandictionary.data.database
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.urbandictionary.data.model.Hit
 import com.urbandictionary.data.model.Urban
 
 class IntegerListConverter {
