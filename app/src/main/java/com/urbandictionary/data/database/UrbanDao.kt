@@ -11,17 +11,21 @@ import com.urbandictionary.domain.model.Urban
 interface UrbanDao {
 
     @Query("SELECT * FROM Urban")
-    fun all(): LiveData<List<Urban>?>
+    fun all(): LiveData<List<Urban>>
 
     @Query("SELECT * FROM Urban WHERE word=:word")
-    fun getDefine(word: String): LiveData<List<Urban>?>
+    fun getDefine(word: String): List<Urban>
 
     @get:Query("SELECT count(*) FROM Urban")
     val count: Int
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAllUrban(urban: List<Urban>)
+    fun insertAllUrban(urban: List<Urban>?)
 
+    @Query("SELECT * FROM Urban WHERE word = :word ORDER BY thumbs_up")
+    fun getDefineOrderByUp(word: String): LiveData<List<Urban>>
 
+    @Query("SELECT * FROM Urban WHERE word = :word ORDER BY thumbs_down")
+    fun getDefineOrderByDown(word: String): LiveData<List<Urban>>
 
 }

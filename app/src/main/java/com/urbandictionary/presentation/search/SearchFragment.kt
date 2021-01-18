@@ -29,10 +29,11 @@ class SearchFragment : Fragment() {
     ): View {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
-        binding.lifecycleOwner = this
-        binding.vm = viewModel
-
-        binding.urbanDictionaryList.adapter = mAdapter
+        binding.apply {
+            lifecycleOwner = this@SearchFragment
+            vm = viewModel
+            urbanDictionaryList.adapter = mAdapter
+        }
 
         if (this.context?.isNetworkAvailable() == false) {
             Toast.makeText(

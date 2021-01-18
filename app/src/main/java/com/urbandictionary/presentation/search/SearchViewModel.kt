@@ -2,6 +2,7 @@ package com.urbandictionary.presentation.search
 
 import android.util.Log
 import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,10 +24,10 @@ class SearchViewModel constructor(private val getUrbanDictionaryUseCase: GetUrba
         getUrbanDictionaryUseCase.invoke(
             viewModelScope, term,
             object :
-                UseCaseResponse<UrbanDictionaryResponse> {
-                override fun onSuccess(result: UrbanDictionaryResponse) {
-                    Log.i(TAG, "result: $result")
-                    resultDictionaryData.value = result.list
+                UseCaseResponse<LiveData<UrbanDictionaryResponse>> {
+                override fun onSuccess(result: LiveData<UrbanDictionaryResponse>) {
+                    Log.i(TAG, "result: ${result.value}")
+                    resultDictionaryData.value = result.value?.list
                     showProgressbar.value = false
                 }
 
