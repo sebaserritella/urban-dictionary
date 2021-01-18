@@ -39,15 +39,17 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@={vm.searchText}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/searchButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="@string/search"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -62,28 +64,21 @@
             app:layout_constraintTop_toBottomOf="@id/searchConstraint">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/definitionButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Definition"
-                app:layout_constraintEnd_toStartOf="@id/upSortButton"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.button.MaterialButton
                 android:id="@+id/upSortButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Up Sort"
+                android:text="@string/sort_by_thumb_up"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toStartOf="@id/downSortButton"
-                app:layout_constraintStart_toEndOf="@id/definitionButton"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/downSortButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Down Sort"
+                android:text="@string/sort_by_thumb_down"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/upSortButton"
                 app:layout_constraintTop_toTopOf="parent" />

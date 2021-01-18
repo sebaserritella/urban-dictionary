@@ -16,11 +16,12 @@ class SearchViewModel constructor(private val getUrbanDictionaryUseCase: GetUrba
     val resultDictionaryData = MutableLiveData<List<Urban>>()
     val showProgressbar = MutableLiveData<Boolean>()
     val messageData = MutableLiveData<String>()
+    val searchText = MutableLiveData("")
 
-    fun getDefine(term: String) {
+    fun getDefine() {
         showProgressbar.value = true
         getUrbanDictionaryUseCase.invoke(
-            viewModelScope, term,
+            viewModelScope, searchText.value,
             object :
                 UseCaseResponse<LiveData<UrbanDictionaryResponse>> {
                 override fun onSuccess(result: LiveData<UrbanDictionaryResponse>) {

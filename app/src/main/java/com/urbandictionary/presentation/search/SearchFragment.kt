@@ -10,7 +10,6 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.urbandictionary.R
 import com.urbandictionary.databinding.FragmentSearchBinding
 import com.urbandictionary.util.isNetworkAvailable
@@ -51,7 +50,11 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.searchButton.setOnClickListener {
-            binding.vm?.getDefine(binding.textInputEditText.text.toString())
+            if (!binding.vm?.searchText?.value.isNullOrEmpty()) {
+                binding.vm?.getDefine()
+            } else {
+                binding.vm?.messageData?.postValue(getString(R.string.empty_box))
+            }
         }
 
         binding.downSortButton.setOnClickListener {
@@ -71,8 +74,8 @@ class SearchFragment : Fragment() {
             Toast.makeText(this.context, it, LENGTH_LONG).show()
         })
 
-        binding.vm?.showProgressbar?.observe(this.viewLifecycleOwner, Observer { isVisible ->
-           binding.progressBar.visibility = if (isVisible) VISIBLE else GONE
+        binding.vm?.showProgressbar?.observe(this.viewLifecycleOwner, { isVisible ->
+            binding.progressBar.visibility = if (isVisible) VISIBLE else GONE
         })
 
     }
