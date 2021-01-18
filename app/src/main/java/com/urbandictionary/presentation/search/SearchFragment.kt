@@ -1,5 +1,6 @@
 package com.urbandictionary.presentation.search
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.urbandictionary.R
 import com.urbandictionary.databinding.FragmentSearchBinding
 import com.urbandictionary.util.isNetworkAvailable
 import org.koin.android.viewmodel.ext.android.viewModel
+
 
 class SearchFragment : Fragment() {
 

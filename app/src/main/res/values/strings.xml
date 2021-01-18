@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Urban Dictionary</string>
-    <string name="database">ReignTest.db</string>
+    <string name="urban_dictionary_app">Urban Dictionary App</string>
+    <string name="database">urban.db</string>
     <string name="retry">Retry</string>
     <string name="label">Insert Word</string>
     <string name="search">Search Definition</string>
@@ -9,5 +10,6 @@
     <string name="sort_by_thumb_up">Sort by thumb Up</string>
     <string name="sort_by_thumb_down">Sort By Thumb Down</string>
     <string name="empty_box">"Please, complete the box to find the definition"</string>
+
 
 </resources>
