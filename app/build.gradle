@@ -20,6 +20,7 @@ android {
         buildConfigField "String", "KEY_VVALUE_API", "\"cd1aaed060msh0d477fde70c7d7fp1c3278jsn78d25bc094aa\""
         buildConfigField "String", "KEY_HOST_VALUE", "\"mashape-community-urban-dictionary.p.rapidapi.com\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument "size", "small"
         multiDexEnabled true
     }
 
@@ -102,11 +103,12 @@ dependencies {
     // for testing
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'androidx.test:core:1.3.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     testImplementation 'org.koin:koin-test:2.2.0'
-    testImplementation 'io.mockk:mockk:1.9.3'
+    testImplementation 'io.mockk:mockk:1.10.0'
+    androidTestImplementation 'androidx.test:rules:1.3.1-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0-alpha03'
 
 }

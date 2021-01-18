@@ -38,6 +38,7 @@ class UrbanDaoTest : AppDatabase() {
         author = "juan",
         current_vote = "",
         example = "",
+        searchWord = "pepa",
         permalink = "",
         definition = "",
         written_on = "",
