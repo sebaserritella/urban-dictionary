@@ -27,9 +27,9 @@ class UrbanResponseRepositoryImpTest {
     @Test
     fun getLocalDefine() = runBlocking {
         val posts = mockk<MutableLiveData<UrbanDictionaryResponse>>()
-        every { runBlocking { postsRepository.getLocalDefine("pepa") } } returns (posts)
+        every { runBlocking { postsRepository.getDefine("pepa") } } returns (posts)
 
-        val result = postsRepository.getLocalDefine("pepa")
+        val result = postsRepository.getDefine("pepa")
         MatcherAssert.assertThat(
             "Received result [$result] & mocked [$posts] must be matches on each other!",
             result,
@@ -40,9 +40,9 @@ class UrbanResponseRepositoryImpTest {
     @Test
     fun getRemote() = runBlocking {
         val posts = mockk<MutableLiveData<UrbanDictionaryResponse>>()
-        every { runBlocking { postsRepository.getRemote("pepa") } } returns (posts)
+        every { runBlocking { postsRepository.getFromRemoteDataSource("pepa") } } returns (posts)
 
-        val result = postsRepository.getRemote("pepa")
+        val result = postsRepository.getFromRemoteDataSource("pepa")
         MatcherAssert.assertThat(
             "Received result [$result] & mocked [$posts] must be matches on each other!",
             result,

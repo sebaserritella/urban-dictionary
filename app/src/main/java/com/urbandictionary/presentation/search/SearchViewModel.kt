@@ -1,7 +1,5 @@
 package com.urbandictionary.presentation.search
 
-import android.util.Log
-import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,7 +24,6 @@ class SearchViewModel constructor(private val getUrbanDictionaryUseCase: GetUrba
             object :
                 UseCaseResponse<LiveData<UrbanDictionaryResponse>> {
                 override fun onSuccess(result: LiveData<UrbanDictionaryResponse>) {
-                    Log.i(TAG, "result: ${result.value}")
                     resultDictionaryData.value = result.value?.list
                     showProgressbar.value = false
                 }

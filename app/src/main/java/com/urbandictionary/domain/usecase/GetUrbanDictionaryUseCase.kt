@@ -10,7 +10,7 @@ class GetUrbanDictionaryUseCase constructor(
 ) : UseCase<LiveData<UrbanDictionaryResponse>, Any?>() {
 
     override suspend fun run(params: Any?): LiveData<UrbanDictionaryResponse> {
-        return urbanDictionaryRepository.getLocalDefine(params as String)
+        return urbanDictionaryRepository.getDefine(params as String)
     }
 
 

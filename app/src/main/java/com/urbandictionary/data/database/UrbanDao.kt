@@ -11,7 +11,7 @@ import com.urbandictionary.domain.model.Urban
 interface UrbanDao {
 
     @Query("SELECT * FROM Urban")
-    fun all(): LiveData<List<Urban>>
+    fun all(): List<Urban>
 
     @Query("SELECT * FROM Urban WHERE word=:word")
     fun getDefine(word: String): List<Urban>

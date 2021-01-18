@@ -15,9 +15,10 @@ data class UrbanDictionaryResponse(
 @Parcelize
 @JsonClass(generateAdapter = true)
 data class Urban(
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0L,
     val author: String?,
     val current_vote: String?,
-    @PrimaryKey
     val defid: Int?,
     val definition: String?,
     val example: String?,
