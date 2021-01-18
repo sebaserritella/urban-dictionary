@@ -2,7 +2,7 @@
 buildscript {
     ext.kotlin_version = "1.4.21"
     ext.nav_version = '1.0.0'
-    ext.retrofit_version = '2.9.0'
+
     ext.moshi_version = '1.9.3'
     ext.converter_moshi_version = '2.9.0'
     ext.mokito_kotlin_version = "1.5.0"
