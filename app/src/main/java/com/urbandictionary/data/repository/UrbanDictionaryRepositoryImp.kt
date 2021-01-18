@@ -33,6 +33,12 @@ class UrbanDictionaryRepositoryImp(
         val remote = remoteDataSource.getDefine(term)
         liveData.postValue(remote)
 
+        remote.list?.let {
+            for (search in it) {
+                search.searchWord = term
+            }
+        }
+
         withContext(Dispatchers.IO) {
             localDataSource.insertAllUrban(remote.list)
         }

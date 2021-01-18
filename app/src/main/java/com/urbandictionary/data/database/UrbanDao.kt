@@ -13,7 +13,7 @@ interface UrbanDao {
     @Query("SELECT * FROM Urban")
     fun all(): List<Urban>
 
-    @Query("SELECT * FROM Urban WHERE word=:word")
+    @Query("SELECT * FROM Urban WHERE searchWord=:word")
     fun getDefine(word: String): List<Urban>
 
     @get:Query("SELECT count(*) FROM Urban")

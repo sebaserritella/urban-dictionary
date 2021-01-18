@@ -17,6 +17,7 @@ data class UrbanDictionaryResponse(
 data class Urban(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L,
+    var searchWord: String?,
     val author: String?,
     val current_vote: String?,
     val defid: Int?,
