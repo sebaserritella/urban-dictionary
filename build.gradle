@@ -12,6 +12,7 @@ buildscript {
     ext.koin_architecture_version = "0.8.2"
     ext.mockk_version = "1.9.3"
     ext.lifecycle_viewmodel_version = "2.2.0"
+    ext.arc_lib_version = '1.0.0-alpha6'
     repositories {
         google()
         jcenter()

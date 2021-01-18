@@ -1,4 +1,4 @@
-package com.urbandictionary.repository
+package com.urbandictionary
 
 import com.urbandictionary.di.AppModule
 import com.urbandictionary.di.NetworkModule
