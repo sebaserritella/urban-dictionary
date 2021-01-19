@@ -8,6 +8,7 @@ import com.urbandictionary.domain.model.ApiError
 import com.urbandictionary.domain.model.Urban
 import com.urbandictionary.domain.model.UrbanDictionaryResponse
 import com.urbandictionary.domain.usecase.GetUrbanDictionaryUseCase
+import com.urbandictionary.domain.usecase.Params
 import com.urbandictionary.domain.usecase.base.UseCaseResponse
 
 class SearchViewModel constructor(private val getUrbanDictionaryUseCase: GetUrbanDictionaryUseCase) :
@@ -21,7 +22,7 @@ class SearchViewModel constructor(private val getUrbanDictionaryUseCase: GetUrba
     fun getDefine() {
         showProgressbar.value = true
         getUrbanDictionaryUseCase.invoke(
-            viewModelScope, searchText.value,
+            viewModelScope, Params.ParameterTerm(searchText.value),
             object :
                 UseCaseResponse<LiveData<UrbanDictionaryResponse>> {
                 override fun onSuccess(result: LiveData<UrbanDictionaryResponse>) {

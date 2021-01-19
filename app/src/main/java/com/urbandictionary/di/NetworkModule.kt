@@ -2,11 +2,7 @@ package com.urbandictionary.di
 
 import com.squareup.moshi.Moshi
 import com.urbandictionary.BuildConfig
-import com.urbandictionary.data.database.UrbanDao
-import com.urbandictionary.data.repository.UrbanDictionaryRepositoryImp
 import com.urbandictionary.data.source.remote.UrbanDictionaryApiService
-import com.urbandictionary.domain.repository.UrbanDictionaryRepository
-import com.urbandictionary.domain.usecase.GetUrbanDictionaryUseCase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -48,12 +44,4 @@ fun createRetrofit(okHttpClient: OkHttpClient, url: String): Retrofit {
 
 fun createService(retrofit: Retrofit): UrbanDictionaryApiService {
     return retrofit.create(UrbanDictionaryApiService::class.java)
-}
-
-fun createDictionaryRepository(urbanDao: UrbanDao, urbanDictionaryApiService: UrbanDictionaryApiService): UrbanDictionaryRepository {
-    return UrbanDictionaryRepositoryImp(urbanDao, urbanDictionaryApiService)
-}
-
-fun createGetUrbanDictionaryUseCase(urbanDictionaryRepository: UrbanDictionaryRepository): GetUrbanDictionaryUseCase {
-    return GetUrbanDictionaryUseCase(urbanDictionaryRepository)
 }
