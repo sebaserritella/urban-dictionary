@@ -5,10 +5,11 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.urbandictionary.domain.database.DaoInterface
 import com.urbandictionary.domain.model.Urban
 
 @Dao
-interface UrbanDao {
+interface UrbanDao: DaoInterface {
 
     @Query("SELECT * FROM Urban")
     fun all(): List<Urban>
