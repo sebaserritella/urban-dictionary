@@ -35,6 +35,7 @@ class UrbanResponseRepositoryImpTest {
             result,
             CoreMatchers.`is`(posts)
         )
+
     }
 
     @Test
