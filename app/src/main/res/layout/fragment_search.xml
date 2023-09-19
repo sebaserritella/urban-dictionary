@@ -9,7 +9,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="vm"
+            name="searchViewModel"
             type="com.urbandictionary.presentation.search.SearchViewModel" />
 
     </data>

@@ -1,8 +1,8 @@
-package com.urbandictionary.data.source.remote
+package com.urbandictionary.data.network
 
 import com.urbandictionary.BuildConfig.KEY_HOST_VALUE
 import com.urbandictionary.BuildConfig.KEY_VVALUE_API
-import com.urbandictionary.domain.model.UrbanDictionaryResponse
+import com.urbandictionary.data.network.model.UrbanDictionaryApiModel
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
@@ -16,5 +16,5 @@ interface UrbanDictionaryApiService {
 
     @Headers(keyValue, hostValue)
     @GET("/define")
-    suspend fun getDefine(@Query("term") term: String): UrbanDictionaryResponse
+    suspend fun getDefine(@Query("term") term: String): UrbanDictionaryApiModel
 }

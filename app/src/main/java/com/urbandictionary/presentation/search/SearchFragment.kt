@@ -1,6 +1,5 @@
 package com.urbandictionary.presentation.search
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,6 @@ import com.urbandictionary.R
 import com.urbandictionary.databinding.FragmentSearchBinding
 import com.urbandictionary.util.isNetworkAvailable
 import org.koin.android.viewmodel.ext.android.viewModel
-
 
 class SearchFragment : Fragment() {
 
@@ -32,7 +30,7 @@ class SearchFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
         binding.apply {
             lifecycleOwner = this@SearchFragment
-            vm = viewModel
+            searchViewModel = viewModel
             urbanDictionaryList.adapter = mAdapter
         }
 
@@ -52,33 +50,33 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.searchButton.setOnClickListener {
-            if (!binding.vm?.searchText?.value.isNullOrEmpty()) {
-                binding.vm?.getDefine()
+            if (!binding.searchViewModel?.searchText?.value.isNullOrEmpty()) {
+                binding.searchViewModel?.getDefine()
             } else {
-                binding.vm?.messageData?.postValue(getString(R.string.empty_box))
+                binding.searchViewModel?.messageData?.postValue(getString(R.string.empty_box))
             }
         }
 
         binding.downSortButton.setOnClickListener {
-            binding.vm?.sortDown()
+            binding.searchViewModel?.sortDown()
         }
 
         binding.upSortButton.setOnClickListener {
-            binding.vm?.sortUp()
+            binding.searchViewModel?.sortUp()
         }
 
-        binding.vm?.resultDictionaryData?.observe(this.viewLifecycleOwner, { dictionaryResponse ->
+        binding.searchViewModel?.resultDictionaryData?.observe(this.viewLifecycleOwner) { dictionaryResponse ->
             binding.progressBar.visibility = GONE
-            dictionaryResponse?.let { mAdapter?.urbanList = it }
-        })
+            dictionaryResponse?.let { mAdapter?.urbanApiModelList = it }
+        }
 
-        binding.vm?.messageData?.observe(this.viewLifecycleOwner, {
+        binding.searchViewModel?.messageData?.observe(this.viewLifecycleOwner) {
             Toast.makeText(this.context, it, LENGTH_LONG).show()
-        })
+        }
 
-        binding.vm?.showProgressbar?.observe(this.viewLifecycleOwner, { isVisible ->
+        binding.searchViewModel?.showProgressbar?.observe(this.viewLifecycleOwner) { isVisible ->
             binding.progressBar.visibility = if (isVisible) VISIBLE else GONE
-        })
+        }
 
     }
 

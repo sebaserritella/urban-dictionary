@@ -2,7 +2,7 @@ package com.urbandictionary.di
 
 import com.squareup.moshi.Moshi
 import com.urbandictionary.BuildConfig
-import com.urbandictionary.data.source.remote.UrbanDictionaryApiService
+import com.urbandictionary.data.network.UrbanDictionaryApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

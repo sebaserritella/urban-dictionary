@@ -1,8 +1,8 @@
 package com.urbandictionary.di
 
-import com.urbandictionary.data.database.UrbanDao
+import com.urbandictionary.data.database.dao.UrbanDao
 import com.urbandictionary.data.repository.UrbanDictionaryRepositoryImp
-import com.urbandictionary.data.source.remote.UrbanDictionaryApiService
+import com.urbandictionary.data.network.UrbanDictionaryApiService
 import com.urbandictionary.domain.repository.UrbanDictionaryRepository
 import com.urbandictionary.domain.usecase.GetUrbanDictionaryUseCase
 import com.urbandictionary.presentation.search.SearchViewModel
@@ -18,7 +18,10 @@ val AppModule = module {
     single { createDictionaryRepository(get(), get()) }
 }
 
-fun createDictionaryRepository(urbanDao: UrbanDao, urbanDictionaryApiService: UrbanDictionaryApiService): UrbanDictionaryRepository {
+fun createDictionaryRepository(
+    urbanDao: UrbanDao,
+    urbanDictionaryApiService: UrbanDictionaryApiService
+): UrbanDictionaryRepository {
     return UrbanDictionaryRepositoryImp(urbanDao, urbanDictionaryApiService)
 }
 

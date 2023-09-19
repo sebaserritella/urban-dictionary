@@ -1,7 +1,7 @@
 package com.urbandictionary.database
 
-import com.urbandictionary.data.database.UrbanDao
-import com.urbandictionary.domain.model.Urban
+import com.urbandictionary.data.database.dao.UrbanDao
+import com.urbandictionary.data.database.entities.UrbanEntity
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.Is.`is`
 import org.junit.Before
@@ -25,20 +25,20 @@ class UrbanDaoTest : AppDatabase() {
         val mockDataList = mockUrbanList()
         urbanDao.insertAllUrban(mockDataList)
 
-        val loadFromDB = urbanDao.getDefine("pepa")
+        val loadFromDB = urbanDao.getDefine("hola")
         assertThat(loadFromDB.toString(), `is`(mockDataList.toString()))
 
         val mockData = mockUrban()
         assertThat(loadFromDB[0].toString(), `is`(mockData.toString()))
     }
 
-    private fun mockUrban() = Urban(
-        word = "pepa",
+    private fun mockUrban() = UrbanEntity(
+        word = "hola",
         defid = 1,
         author = "juan",
         current_vote = "",
         example = "",
-        searchWord = "pepa",
+        searchWord = "hola",
         permalink = "",
         definition = "",
         written_on = "",
