@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.urbandictionary.domain.model.ApiError
 import com.urbandictionary.domain.model.Urban
-import com.urbandictionary.domain.model.UrbanDictionaryResponse
+import com.urbandictionary.domain.model.UrbanDictionary
 import com.urbandictionary.domain.usecase.GetUrbanDictionaryUseCase
 import com.urbandictionary.domain.usecase.Params
 import com.urbandictionary.domain.usecase.base.UseCaseResponse
@@ -24,8 +24,8 @@ class SearchViewModel constructor(private val getUrbanDictionaryUseCase: GetUrba
         getUrbanDictionaryUseCase.invoke(
             viewModelScope, Params.ParameterTerm(searchText.value),
             object :
-                UseCaseResponse<LiveData<UrbanDictionaryResponse>> {
-                override fun onSuccess(result: LiveData<UrbanDictionaryResponse>) {
+                UseCaseResponse<LiveData<UrbanDictionary>> {
+                override fun onSuccess(result: LiveData<UrbanDictionary>) {
                     resultDictionaryData.value = result.value?.list
                     showProgressbar.value = false
                 }

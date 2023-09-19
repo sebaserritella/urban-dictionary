@@ -23,18 +23,6 @@ class BaseApplication : Application() {
         }
 
         startKoin {
-            /*
-            logger(object : Logger() {
-                override fun log(level: Level, msg: MESSAGE) {
-                    when (level) {
-                        Level.DEBUG -> Timber.d(msg)
-                        Level.INFO -> Timber.i(msg)
-                        Level.ERROR -> Timber.e(msg)
-                        Level.NONE -> Timber.e(msg)
-                    }
-                }
-            })
-             */
             androidLogger(Level.ERROR)
             androidContext(this@BaseApplication)
             modules(listOf(DatabaseModule, NetworkModule, AppModule))

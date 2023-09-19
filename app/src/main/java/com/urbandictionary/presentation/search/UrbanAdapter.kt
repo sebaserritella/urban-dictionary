@@ -6,13 +6,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.urbandictionary.R
-import com.urbandictionary.domain.model.Urban
 import com.urbandictionary.databinding.HolderUrbanBinding
+import com.urbandictionary.domain.model.Urban
 import kotlin.properties.Delegates
 
 class UrbanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var urbanList: List<Urban> by Delegates.observable(emptyList()) { _, _, _ ->
+    var urbanApiModelList: List<Urban> by Delegates.observable(emptyList()) { _, _, _ ->
         notifyDataSetChanged()
     }
 
@@ -23,9 +23,10 @@ class UrbanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return UrbanViewHolder(holderPostBinding)
     }
 
-    override fun getItemCount(): Int = if (urbanList.isNullOrEmpty()) 0 else urbanList.size
+    override fun getItemCount(): Int =
+        if (urbanApiModelList.isNullOrEmpty()) 0 else urbanApiModelList.size
 
-    private fun getItem(position: Int): Urban = urbanList[position]
+    private fun getItem(position: Int): Urban = urbanApiModelList[position]
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as UrbanViewHolder).onBind(getItem(position))

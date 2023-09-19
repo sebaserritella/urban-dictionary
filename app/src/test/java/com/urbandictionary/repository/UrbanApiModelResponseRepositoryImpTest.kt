@@ -2,7 +2,7 @@ package com.urbandictionary.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.urbandictionary.data.repository.UrbanDictionaryRepositoryImp
-import com.urbandictionary.domain.model.UrbanDictionaryResponse
+import com.urbandictionary.domain.model.UrbanDictionary
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -14,7 +14,7 @@ import org.junit.Before
 import org.junit.Test
 
 
-class UrbanResponseRepositoryImpTest {
+class UrbanApiModelResponseRepositoryImpTest {
 
     @MockK
     lateinit var postsRepository: UrbanDictionaryRepositoryImp
@@ -26,30 +26,27 @@ class UrbanResponseRepositoryImpTest {
 
     @Test
     fun getLocalDefine() = runBlocking {
-        val posts = mockk<MutableLiveData<UrbanDictionaryResponse>>()
-        every { runBlocking { postsRepository.getDefine("pepa") } } returns (posts)
+        val posts = mockk<MutableLiveData<UrbanDictionary>>()
+        every { runBlocking { postsRepository.getDefine("hola") } } returns (posts)
 
-        val result = postsRepository.getDefine("pepa")
+        val result = postsRepository.getDefine("hola")
         MatcherAssert.assertThat(
             "Received result [$result] & mocked [$posts] must be matches on each other!",
             result,
             CoreMatchers.`is`(posts)
         )
-
     }
 
     @Test
     fun getRemote() = runBlocking {
-        val posts = mockk<MutableLiveData<UrbanDictionaryResponse>>()
-        every { runBlocking { postsRepository.getFromRemoteDataSource("pepa") } } returns (posts)
+        val posts = mockk<MutableLiveData<UrbanDictionary>>()
+        every { runBlocking { postsRepository.getFromRemoteDataSource("hola") } } returns (posts)
 
-        val result = postsRepository.getFromRemoteDataSource("pepa")
+        val result = postsRepository.getFromRemoteDataSource("hola")
         MatcherAssert.assertThat(
             "Received result [$result] & mocked [$posts] must be matches on each other!",
             result,
             CoreMatchers.`is`(posts)
         )
     }
-
-
 }

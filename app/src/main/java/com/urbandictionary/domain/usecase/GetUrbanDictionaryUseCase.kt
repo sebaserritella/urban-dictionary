@@ -2,15 +2,15 @@ package com.urbandictionary.domain.usecase
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.urbandictionary.domain.model.UrbanDictionaryResponse
+import com.urbandictionary.domain.model.UrbanDictionary
 import com.urbandictionary.domain.repository.UrbanDictionaryRepository
 import com.urbandictionary.domain.usecase.base.UseCase
 
 class GetUrbanDictionaryUseCase constructor(
     private val urbanDictionaryRepository: UrbanDictionaryRepository
-) : UseCase<LiveData<UrbanDictionaryResponse>, Params.ParameterTerm?>() {
+) : UseCase<LiveData<UrbanDictionary>, Params.ParameterTerm?>() {
 
-    override suspend fun run(params: Params.ParameterTerm?): LiveData<UrbanDictionaryResponse> {
+    override suspend fun run(params: Params.ParameterTerm?): LiveData<UrbanDictionary> {
         return params?.term?.let {
             urbanDictionaryRepository.getDefine(params.term)
         } ?: MutableLiveData()
